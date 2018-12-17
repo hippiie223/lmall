@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 配置文件路径 -->
+    <!--<properties resource="generatorConfig.properties"/>-->
+    <!--数据库驱动包路径 -->
+
+    <classPathEntry location="/Users/didi/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar"/>
+    <!-- Example 目标包修改插件 -->
+
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">
+            <!-- 修改Example类生成到目标包下 -->
+            <property name="targetPackage" value="com.lmall.domain.example"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://wangbowen0223.mysql.rds.aliyuncs.com:3306/lmall_v1?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="wangbowen"
+                        password="WANGbowen0223">
+        </jdbcConnection>
+
+        <!--生成的model 包路径 -->
+        <javaModelGenerator targetPackage="com.lmall.domain" targetProject="src/main/java">
+        </javaModelGenerator>
+
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- 生成的Dao接口 的包路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lmall.mapper"
+                             targetProject="src/main/java"/>
+
+
+
+        <!--对应数据库表名 -->
+        <table tableName="tb_user" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+        </table>
+        <!--<table tableName="pass_system_ip">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="pass_system_member">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="%"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+        </table>-->
+
+
+    </context>
+
+</generatorConfiguration>

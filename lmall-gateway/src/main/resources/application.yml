@@ -1,0 +1,47 @@
+
+spring:
+  profiles:
+    include: common-@profile-env@
+    active:  gateway-@profile-env@
+  application:
+    name: lmall-gateway
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    api-lmall-user:
+      path: /user/**
+      serviceID: lmall-user
+    api-lmall-goods:
+      path: /goods/**
+      serviceID: lmall-goods
+    api-lmall-portal:
+      path: /portal/**
+      serviceID: lmall-portal
+
+  retryable: true
+  add-host-header: true
+
+ribbon:
+  ReadTimeout: 30000
+  SocketTimeout: 60000
+  #同一个Server重试的次数(除去首次)
+  MaxAutoRetries: 0
+  #切换相同Server的次数
+  MaxAutoRetriesNextServer: 2
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 90001
+
+

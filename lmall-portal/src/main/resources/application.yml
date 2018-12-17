@@ -1,0 +1,15 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: lmall-portal
+  profiles:
+    include: common-@profile-env@,stream-@profile-env@
+    active: @profile-env@
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 10000
+
+

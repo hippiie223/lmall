@@ -1,0 +1,16 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: lmall-goods
+  profiles:
+    active: goods-@profile-env@
+    include: common-@profile-env@,stream-@profile-env@
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 60000
+  eager-load:
+    enabled: true
+
