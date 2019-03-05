@@ -1,13 +1,12 @@
 server:
   port: 9001
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:9000/eureka/
 spring:
   application:
     name: lmall-user
+  profiles:
+    active: @profile-env@
+    include: common-@profile-env@,stream-@profile-env@
 
 feign:
   hystrix:

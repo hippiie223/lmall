@@ -21,37 +21,5 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <configuration>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${dependency.version.mysql-connector}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.itfsw</groupId>
-                        <artifactId>mybatis-generator-plugin</artifactId>
-                        <version>${dependency.version.mybatis-plugin}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-
-    </build>
-
-
-
 
 </project>

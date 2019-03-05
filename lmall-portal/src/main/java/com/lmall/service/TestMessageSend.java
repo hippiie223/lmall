@@ -1,4 +1,4 @@
-package com.lmall.lmallportal.service;
+package com.lmall.service;
 
 import com.lmall.stream.Source;
 import com.lmall.stream.message.TestMessage;
