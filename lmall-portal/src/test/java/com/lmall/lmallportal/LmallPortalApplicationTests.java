@@ -1,6 +1,6 @@
 package com.lmall.lmallportal;
 
-import com.lmall.lmallportal.service.TestMessageSend;
+import com.lmall.service.TestMessageSend;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

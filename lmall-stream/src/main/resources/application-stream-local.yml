@@ -8,3 +8,5 @@ spring:
           minPartitionCount: 1
           autoCreateTopics: false
           autoAddPartitions: false
+server:
+  port: 9005
