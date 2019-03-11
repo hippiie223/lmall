@@ -23,6 +23,8 @@
         <module>lmall-common</module>
         <module>lmall-dao</module>
         <module>lmall-gateway</module>
+        <module>lmall-portal</module>
+        <module>lmall-stream</module>
     </modules>
 
     <properties>

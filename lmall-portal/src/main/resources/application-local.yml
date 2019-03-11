@@ -2,11 +2,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:9000/eureka/
-
-spring:
-  cloud:
-    stream:
-      bindings:
-        test_output:
-          destination: TEST
-          content-type: application/json

@@ -7,9 +7,9 @@ mybatis:
 spring:
   datasource:
     name: test
-    url: jdbc:mysql://localhost:3306/monkey?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: root
-    password: 123456
+    url: jdbc:mysql://39.106.200.100:3306/gpp?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: wbw
+    password: WANGbowen0223.
     driver-class-name: com.mysql.jdbc.Driver
     hikari:
       maxLifetime: 1800000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
