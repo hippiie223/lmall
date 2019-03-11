@@ -5,10 +5,14 @@ import com.lmall.domain.example.UsersExample;
 import com.lmall.mapper.UsersMapper;
 import com.lmall.service.UserService;
 import com.lmall.util.CheckSumBuilder;
+import com.lmall.util.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by reckywangbowen_i on 2019/03/04
@@ -21,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void insertUser(Users users) {
+        users.setLastUpdateTime(TimeUtil.getCurrentTime());
         usersMapper.insertSelective(users);
     }
 
