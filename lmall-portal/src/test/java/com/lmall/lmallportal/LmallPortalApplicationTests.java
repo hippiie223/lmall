@@ -8,9 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LmallPortalApplicationTests {
-
-
-
     @Test
     public void contextLoads() {
 
