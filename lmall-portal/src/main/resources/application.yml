@@ -5,8 +5,9 @@ spring:
   application:
     name: lmall-portal
   profiles:
-    include: common-@profile-env@,stream-@profile-env@
     active: @profile-env@
+    include: common-@profile-env@,stream-@profile-env@
+
 
 ribbon:
   ReadTimeout: 60000
