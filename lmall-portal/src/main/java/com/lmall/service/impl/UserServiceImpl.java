@@ -85,6 +85,17 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo = new UserInfo();
         if(requestBody.getUserName() != null){
             userInfo.setUserName(requestBody.getUserName());
+            FocusAndFansExample focusAndFansExample = new FocusAndFansExample();
+            focusAndFansExample.createCriteria().andFocusEqualTo(requestBody.getOldUserName());
+            FocusAndFans focusAndFans = new FocusAndFans();
+            focusAndFans.setFocus(requestBody.getUserName());
+            focusAndFansMapper.updateByExampleSelective(focusAndFans, focusAndFansExample);
+
+            focusAndFansExample.clear();
+            focusAndFansExample.createCriteria().andFansEqualTo(requestBody.getOldUserName());
+            focusAndFans.setFocus("");
+            focusAndFans.setFans(requestBody.getUserName());
+            focusAndFansMapper.updateByExampleSelective(focusAndFans, focusAndFansExample);
         }
         if(requestBody.getAddress() != null){
             userInfo.setAddress(requestBody.getAddress());
