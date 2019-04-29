@@ -1,5 +1,7 @@
 package com.lmall.domain;
 
+import com.lmall.util.UpdateTime;
+
 import java.util.Date;
 
 public class Users {
@@ -8,7 +10,7 @@ public class Users {
     private String password;
 
     private String username;
-
+    @UpdateTime
     private Date lastUpdateTime;
 
     private Integer age;

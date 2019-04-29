@@ -1,11 +1,14 @@
 package com.lmall.controller;
 
+import com.lmall.domain.UserInfo;
 import com.lmall.domain.Users;
 import com.lmall.domain.example.UsersExample;
 import com.lmall.message.SendCode;
 import com.lmall.request.InsertUserRequestBody;
 import com.lmall.request.LoginRequestBody;
+import com.lmall.request.UpdateUserInfoRequestBody;
 import com.lmall.respbody.RootRespBody;
+import com.lmall.response.UserInfoRespBody;
 import com.lmall.service.UserService;
 import com.lmall.util.CheckSumBuilder;
 import io.swagger.annotations.Api;
@@ -56,11 +59,11 @@ public class UserController {
         }
 
 
-        Users users = new Users();
+        UserInfo users = new UserInfo();
         String password = CheckSumBuilder.getMD5(insertUserRequestBody.getPassword());
         users.setPhone(insertUserRequestBody.getPhone());
         if(insertUserRequestBody.getUsername() != null){
-            users.setUsername(insertUserRequestBody.getUsername());
+            users.setUserName(insertUserRequestBody.getUsername());
         }
         users.setPassword(password);
         try {
@@ -78,6 +81,39 @@ public class UserController {
             return RootRespBody.success();
         }
         return RootRespBody.failure(RootRespBody.Status.REQUEST_PARAMETER_ERROR,"密码错误！");
+    }
+
+    @GetMapping(path = "/is/username/exist")
+    @ApiOperation("用户名是否存在")
+    public RootRespBody isUserNameExist(@RequestParam String userName){
+        if(userService.isNameExist(userName)){
+            return RootRespBody.success(true);
+        }else {
+            return RootRespBody.success(false);
+        }
+    }
+
+    @PostMapping(path = "/focus")
+    @ApiOperation("关注用户")
+    public RootRespBody focus(@RequestParam String userName, @RequestParam String focusUserName){
+        if(userService.userFocus(userName, focusUserName)){
+            return RootRespBody.success("关注成功!");
+        }else {
+            return RootRespBody.success("关注失败!");
+        }
+    }
+
+    @GetMapping(path = "/get/user/info")
+    @ApiOperation("获取用户个人信息")
+    public RootRespBody<UserInfoRespBody> getUserInfo(@RequestParam String userName){
+        return RootRespBody.success(userService.getUserInfo(userName));
+    }
+
+    @PostMapping(path = "edit/user/info")
+    @ApiOperation("编辑用户信息")
+    public RootRespBody editUserInfo(@RequestBody UpdateUserInfoRequestBody requestBody){
+        userService.updateUserInfo(requestBody);
+        return RootRespBody.success();
     }
 
 

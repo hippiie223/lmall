@@ -8,7 +8,7 @@
     <!--<properties resource="generatorConfig.properties"/>-->
     <!--数据库驱动包路径 -->
 
-    <classPathEntry location="/Users/didi/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar"/>
+    <classPathEntry location="E:\JAVA\jar\mysql-connector-java-5.1.46.jar"/>
     <!-- Example 目标包修改插件 -->
 
     <context id="MySQLTables" targetRuntime="MyBatis3">
@@ -25,9 +25,9 @@
 
         <!--数据库连接信息 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/monkey?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"
-                        userId="root"
-                        password="123456">
+                        connectionURL="jdbc:mysql://39.106.200.100:3306/gpp?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="wbw"
+                        password="WANGbowen0223.">
         </jdbcConnection>
 
         <!--生成的model 包路径 -->
@@ -45,7 +45,7 @@
 
 
         <!--对应数据库表名 -->
-        <table tableName="users" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="focus_and_fans" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="false">
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
