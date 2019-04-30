@@ -6,6 +6,8 @@ import com.lmall.request.UpdateUserInfoRequestBody;
 import com.lmall.response.UserInfoRespBody;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by reckywangbowen_i on 2019/03/04
  */
@@ -18,5 +20,9 @@ public interface UserService {
     boolean userFocus(String userName, String focusUserName);
     UserInfoRespBody getUserInfo(String userName);
     void updateUserInfo(UpdateUserInfoRequestBody requestBody);
+    List<String> getFocusList(String userName, int pageNum, int pageSize);
+    List<String> getFansList(String userName, int pageNum, int pageSize);
+    boolean deleteFocus(String userName, String focusUserName);
+    boolean deleteFans(String userName, String fansUserName);
 
 }

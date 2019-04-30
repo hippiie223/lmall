@@ -1,5 +1,6 @@
 package com.lmall.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.lmall.domain.FocusAndFans;
 import com.lmall.domain.UserInfo;
 import com.lmall.domain.Users;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by reckywangbowen_i on 2019/03/04
@@ -120,6 +122,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<String> getFocusList(String userName, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return focusAndFansMapper.getFocusList(userName);
+    }
+
+    @Override
+    public List<String> getFansList(String userName, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return focusAndFansMapper.getFansList(userName);
+    }
+
+    @Override
     public UserInfoRespBody getUserInfo(String userName) {
         UserInfoExample userInfoExample = new UserInfoExample();
         userInfoExample.createCriteria().andUserNameEqualTo(userName);
@@ -147,5 +161,20 @@ public class UserServiceImpl implements UserService {
         userInfoRespBody.setFansNum(fansNum);
 
         return userInfoRespBody;
+    }
+
+    @Override
+    public boolean deleteFocus(String userName, String focusUserName) {
+        FocusAndFansExample example = new FocusAndFansExample();
+        example.createCriteria().andFansEqualTo(userName).andFocusEqualTo(focusUserName);
+        return focusAndFansMapper.deleteByExample(example) == 1;
+
+    }
+
+    @Override
+    public boolean deleteFans(String userName, String fansUserName) {
+        FocusAndFansExample example = new FocusAndFansExample();
+        example.createCriteria().andFocusEqualTo(userName).andFansEqualTo(fansUserName);
+        return focusAndFansMapper.deleteByExample(example) == 1;
     }
 }

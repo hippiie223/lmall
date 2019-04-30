@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 /**
  * Created by reckywangbowen_i on 2019/03/04
@@ -114,6 +116,30 @@ public class UserController {
     public RootRespBody editUserInfo(@RequestBody UpdateUserInfoRequestBody requestBody){
         userService.updateUserInfo(requestBody);
         return RootRespBody.success();
+    }
+
+    @GetMapping(path = "/list/focus")
+    @ApiOperation("获取关注列表")
+    public RootRespBody<List<String>> getFocusList(@RequestParam String userName, @RequestParam int pageNum, @RequestParam int pageSize){
+        return RootRespBody.success(userService.getFocusList(userName, pageNum, pageSize));
+    }
+
+    @GetMapping(path = "/list/fans")
+    @ApiOperation("获取粉丝列表")
+    public RootRespBody<List<String>> getFansList(@RequestParam String userName, @RequestParam int pageNum, @RequestParam int pageSize){
+        return RootRespBody.success(userService.getFansList(userName, pageNum, pageSize));
+    }
+
+    @PostMapping(path = "/delete/focus")
+    @ApiOperation("取消关注")
+    public RootRespBody deleteFocus(@RequestParam String userName, @RequestParam String focusUserName){
+        return RootRespBody.success(userService.deleteFocus(userName, focusUserName));
+    }
+
+    @PostMapping(path = "/delete/fans")
+    @ApiOperation("移除粉丝")
+    public RootRespBody deleteFans(@RequestParam String userName, @RequestParam String fansUserName){
+        return RootRespBody.success(userService.deleteFans(userName, fansUserName));
     }
 
 

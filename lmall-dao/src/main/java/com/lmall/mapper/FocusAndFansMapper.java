@@ -22,4 +22,8 @@ public interface FocusAndFansMapper {
     int updateByExampleSelective(@Param("record") FocusAndFans record, @Param("example") FocusAndFansExample example);
 
     int updateByExample(@Param("record") FocusAndFans record, @Param("example") FocusAndFansExample example);
+
+    List<String> getFocusList(@Param("userName") String userName);
+
+    List<String> getFansList(@Param("userName") String userName);
 }

@@ -1,6 +1,7 @@
 package com.lmall.util;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -10,5 +11,9 @@ public class TimeUtil {
     public static Timestamp getCurrentTime(){
         Date date = new Date();
         return new Timestamp(date.getTime());
+    }
+
+    public static String getTime(Date date){
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     }
 }

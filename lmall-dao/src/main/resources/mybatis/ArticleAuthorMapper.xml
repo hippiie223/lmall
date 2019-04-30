@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lmall.mapper.FocusAndFansMapper" >
-  <resultMap id="BaseResultMap" type="com.lmall.domain.FocusAndFans" >
+<mapper namespace="com.lmall.mapper.ArticleAuthorMapper" >
+  <resultMap id="BaseResultMap" type="com.lmall.domain.ArticleAuthor" >
     <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="focus" property="focus" jdbcType="VARCHAR" />
-    <result column="fans" property="fans" jdbcType="VARCHAR" />
+    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+    <result column="article_num" property="articleNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,16 +67,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, focus, fans
+    id, author_name, article_num, create_time, update_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lmall.domain.example.FocusAndFansExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lmall.domain.example.ArticleAuthorExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from focus_and_fans
+    from article_author
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,60 +84,78 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lmall.domain.example.FocusAndFansExample" >
-    delete from focus_and_fans
+  <delete id="deleteByExample" parameterType="com.lmall.domain.example.ArticleAuthorExample" >
+    delete from article_author
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lmall.domain.FocusAndFans" >
-    insert into focus_and_fans (id, focus, fans
-      )
-    values (#{id,jdbcType=INTEGER}, #{focus,jdbcType=VARCHAR}, #{fans,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.lmall.domain.ArticleAuthor" >
+    insert into article_author (id, author_name, article_num, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{authorName,jdbcType=VARCHAR}, #{articleNum,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lmall.domain.FocusAndFans" >
-    insert into focus_and_fans
+  <insert id="insertSelective" parameterType="com.lmall.domain.ArticleAuthor" >
+    insert into article_author
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="focus != null" >
-        focus,
+      <if test="authorName != null" >
+        author_name,
       </if>
-      <if test="fans != null" >
-        fans,
+      <if test="articleNum != null" >
+        article_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="focus != null" >
-        #{focus,jdbcType=VARCHAR},
+      <if test="authorName != null" >
+        #{authorName,jdbcType=VARCHAR},
       </if>
-      <if test="fans != null" >
-        #{fans,jdbcType=VARCHAR},
+      <if test="articleNum != null" >
+        #{articleNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lmall.domain.example.FocusAndFansExample" resultType="java.lang.Integer" >
-    select count(*) from focus_and_fans
+  <select id="countByExample" parameterType="com.lmall.domain.example.ArticleAuthorExample" resultType="java.lang.Integer" >
+    select count(*) from article_author
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update focus_and_fans
+    update article_author
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.focus != null" >
-        focus = #{record.focus,jdbcType=VARCHAR},
+      <if test="record.authorName != null" >
+        author_name = #{record.authorName,jdbcType=VARCHAR},
       </if>
-      <if test="record.fans != null" >
-        fans = #{record.fans,jdbcType=VARCHAR},
+      <if test="record.articleNum != null" >
+        article_num = #{record.articleNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -143,22 +163,24 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update focus_and_fans
+    update article_author
     set id = #{record.id,jdbcType=INTEGER},
-      focus = #{record.focus,jdbcType=VARCHAR},
-      fans = #{record.fans,jdbcType=VARCHAR}
+      author_name = #{record.authorName,jdbcType=VARCHAR},
+      article_num = #{record.articleNum,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.lmall.domain.example.FocusAndFansExample" id="selectByExampleWithRowbounds" >
+  <select resultMap="BaseResultMap" parameterType="com.lmall.domain.example.ArticleAuthorExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from focus_and_fans
+    from article_author
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -166,14 +188,16 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="getFocusList" resultType="java.lang.String"  parameterType="java.lang.String">
-    select focus
-    from focus_and_fans
-    where fans = #{userName}
+  <select id="getTopAuthor" resultType="com.lmall.domain.ArticleAuthorDTO">
+    select
+    id as id,author_name as authorName,article_num as articleNum
+    from article_author
+    order by article_num desc
+    limit 10
   </select>
-  <select id="getFansList" resultType="java.lang.String" parameterType="java.lang.String">
-    select fans
-    from focus_and_fans
-    where focus = #{userName}
-  </select>
+  <update id="changeArticleNum" parameterType="java.lang.String">
+    update article_author
+    set article_num=article_num+1
+    where author_name=#{authorName}
+  </update>
 </mapper>

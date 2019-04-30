@@ -45,7 +45,7 @@
 
 
         <!--对应数据库表名 -->
-        <table tableName="focus_and_fans" enableCountByExample="true" enableUpdateByExample="true"
+        <table tableName="article" enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="false">
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->

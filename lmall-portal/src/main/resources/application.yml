@@ -13,4 +13,10 @@ ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 10000
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 
