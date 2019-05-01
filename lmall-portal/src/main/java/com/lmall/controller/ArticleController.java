@@ -66,6 +66,7 @@ public class ArticleController {
     }
 
     @PostMapping(path = "/post/article")
+    @ApiOperation("文章评论")
     public RootRespBody articlePost(@RequestBody ArticlePostRequestBody requestBody){
         if(requestBody.getArticleId() == 0){
             return RootRespBody.failure(RootRespBody.Status.REQUEST_PARAMETER_ERROR, "文章id不能为空");

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lmall.mapper.ExtMapper">
+    <select id="getAllTopicList" resultType="com.lmall.domain.TopicDTO">
+    select
+    id as id,title as title,img_url as pic,content as content,hits as viewNum,post_num as reviewNum,create_time as createTime,author_name as author
+    from topic
+  </select>
+    <select id="getTopTopicList" resultType="com.lmall.domain.TopicDTO">
+    select
+    id as id,title as title,img_url as pic,content as content,hits as viewNum,post_num as reviewNum,create_time as createTime,author_name as author
+    from topic
+    order by hits desc limit 10
+  </select>
+    <select id="getTopicDetail" resultType="com.lmall.domain.TopicDTO" parameterType="java.lang.String">
+    select
+    id as id,title as title,img_url as pic,content as content,hits as viewNum,post_num as reviewNum,create_time as createTime,author_name as author
+    from topic
+    where title=#{title} and author_name=#{authorName}
+  </select>
+    <update id="updatePostNum" parameterType="java.lang.Integer">
+    update topic
+    set post_num=post_num+1
+    where id=#{topicId}
+  </update>
+  <update id="updatePostReplyNum" parameterType="java.lang.Integer">
+    update topic_post
+    set reply_num=reply_num+1
+    where id=#{postId}
+  </update>
+
+</mapper>
+

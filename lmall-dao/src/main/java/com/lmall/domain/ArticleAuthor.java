@@ -13,6 +13,10 @@ public class ArticleAuthor {
 
     private Date updateTime;
 
+    private Integer topicNum;
+
+    private Integer qaNum;
+
     public Integer getId() {
         return id;
     }
@@ -51,5 +55,21 @@ public class ArticleAuthor {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getTopicNum() {
+        return topicNum;
+    }
+
+    public void setTopicNum(Integer topicNum) {
+        this.topicNum = topicNum;
+    }
+
+    public Integer getQaNum() {
+        return qaNum;
+    }
+
+    public void setQaNum(Integer qaNum) {
+        this.qaNum = qaNum;
     }
 }

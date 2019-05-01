@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ArticleAuthorExample {
+public class TopicPostExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ArticleAuthorExample() {
+    public TopicPostExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,133 +165,193 @@ public class ArticleAuthorExample {
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameIsNull() {
-            addCriterion("author_name is null");
+        public Criteria andTopicIdIsNull() {
+            addCriterion("topic_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameIsNotNull() {
-            addCriterion("author_name is not null");
+        public Criteria andTopicIdIsNotNull() {
+            addCriterion("topic_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameEqualTo(String value) {
-            addCriterion("author_name =", value, "authorName");
+        public Criteria andTopicIdEqualTo(Integer value) {
+            addCriterion("topic_id =", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameNotEqualTo(String value) {
-            addCriterion("author_name <>", value, "authorName");
+        public Criteria andTopicIdNotEqualTo(Integer value) {
+            addCriterion("topic_id <>", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameGreaterThan(String value) {
-            addCriterion("author_name >", value, "authorName");
+        public Criteria andTopicIdGreaterThan(Integer value) {
+            addCriterion("topic_id >", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameGreaterThanOrEqualTo(String value) {
-            addCriterion("author_name >=", value, "authorName");
+        public Criteria andTopicIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("topic_id >=", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameLessThan(String value) {
-            addCriterion("author_name <", value, "authorName");
+        public Criteria andTopicIdLessThan(Integer value) {
+            addCriterion("topic_id <", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameLessThanOrEqualTo(String value) {
-            addCriterion("author_name <=", value, "authorName");
+        public Criteria andTopicIdLessThanOrEqualTo(Integer value) {
+            addCriterion("topic_id <=", value, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameLike(String value) {
-            addCriterion("author_name like", value, "authorName");
+        public Criteria andTopicIdIn(List<Integer> values) {
+            addCriterion("topic_id in", values, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameNotLike(String value) {
-            addCriterion("author_name not like", value, "authorName");
+        public Criteria andTopicIdNotIn(List<Integer> values) {
+            addCriterion("topic_id not in", values, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameIn(List<String> values) {
-            addCriterion("author_name in", values, "authorName");
+        public Criteria andTopicIdBetween(Integer value1, Integer value2) {
+            addCriterion("topic_id between", value1, value2, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameNotIn(List<String> values) {
-            addCriterion("author_name not in", values, "authorName");
+        public Criteria andTopicIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("topic_id not between", value1, value2, "topicId");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameBetween(String value1, String value2) {
-            addCriterion("author_name between", value1, value2, "authorName");
+        public Criteria andUserNameIsNull() {
+            addCriterion("user_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andAuthorNameNotBetween(String value1, String value2) {
-            addCriterion("author_name not between", value1, value2, "authorName");
+        public Criteria andUserNameIsNotNull() {
+            addCriterion("user_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumIsNull() {
-            addCriterion("article_num is null");
+        public Criteria andUserNameEqualTo(String value) {
+            addCriterion("user_name =", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumIsNotNull() {
-            addCriterion("article_num is not null");
+        public Criteria andUserNameNotEqualTo(String value) {
+            addCriterion("user_name <>", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumEqualTo(Integer value) {
-            addCriterion("article_num =", value, "articleNum");
+        public Criteria andUserNameGreaterThan(String value) {
+            addCriterion("user_name >", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumNotEqualTo(Integer value) {
-            addCriterion("article_num <>", value, "articleNum");
+        public Criteria andUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("user_name >=", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumGreaterThan(Integer value) {
-            addCriterion("article_num >", value, "articleNum");
+        public Criteria andUserNameLessThan(String value) {
+            addCriterion("user_name <", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("article_num >=", value, "articleNum");
+        public Criteria andUserNameLessThanOrEqualTo(String value) {
+            addCriterion("user_name <=", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumLessThan(Integer value) {
-            addCriterion("article_num <", value, "articleNum");
+        public Criteria andUserNameLike(String value) {
+            addCriterion("user_name like", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumLessThanOrEqualTo(Integer value) {
-            addCriterion("article_num <=", value, "articleNum");
+        public Criteria andUserNameNotLike(String value) {
+            addCriterion("user_name not like", value, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumIn(List<Integer> values) {
-            addCriterion("article_num in", values, "articleNum");
+        public Criteria andUserNameIn(List<String> values) {
+            addCriterion("user_name in", values, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumNotIn(List<Integer> values) {
-            addCriterion("article_num not in", values, "articleNum");
+        public Criteria andUserNameNotIn(List<String> values) {
+            addCriterion("user_name not in", values, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumBetween(Integer value1, Integer value2) {
-            addCriterion("article_num between", value1, value2, "articleNum");
+        public Criteria andUserNameBetween(String value1, String value2) {
+            addCriterion("user_name between", value1, value2, "userName");
             return (Criteria) this;
         }
 
-        public Criteria andArticleNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("article_num not between", value1, value2, "articleNum");
+        public Criteria andUserNameNotBetween(String value1, String value2) {
+            addCriterion("user_name not between", value1, value2, "userName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumIsNull() {
+            addCriterion("reply_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumIsNotNull() {
+            addCriterion("reply_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumEqualTo(Integer value) {
+            addCriterion("reply_num =", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumNotEqualTo(Integer value) {
+            addCriterion("reply_num <>", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumGreaterThan(Integer value) {
+            addCriterion("reply_num >", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("reply_num >=", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumLessThan(Integer value) {
+            addCriterion("reply_num <", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumLessThanOrEqualTo(Integer value) {
+            addCriterion("reply_num <=", value, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumIn(List<Integer> values) {
+            addCriterion("reply_num in", values, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumNotIn(List<Integer> values) {
+            addCriterion("reply_num not in", values, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumBetween(Integer value1, Integer value2) {
+            addCriterion("reply_num between", value1, value2, "replyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("reply_num not between", value1, value2, "replyNum");
             return (Criteria) this;
         }
 
@@ -415,123 +475,123 @@ public class ArticleAuthorExample {
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumIsNull() {
-            addCriterion("topic_num is null");
+        public Criteria andLastReplyTimeIsNull() {
+            addCriterion("last_reply_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumIsNotNull() {
-            addCriterion("topic_num is not null");
+        public Criteria andLastReplyTimeIsNotNull() {
+            addCriterion("last_reply_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumEqualTo(Integer value) {
-            addCriterion("topic_num =", value, "topicNum");
+        public Criteria andLastReplyTimeEqualTo(Date value) {
+            addCriterion("last_reply_time =", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumNotEqualTo(Integer value) {
-            addCriterion("topic_num <>", value, "topicNum");
+        public Criteria andLastReplyTimeNotEqualTo(Date value) {
+            addCriterion("last_reply_time <>", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumGreaterThan(Integer value) {
-            addCriterion("topic_num >", value, "topicNum");
+        public Criteria andLastReplyTimeGreaterThan(Date value) {
+            addCriterion("last_reply_time >", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("topic_num >=", value, "topicNum");
+        public Criteria andLastReplyTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("last_reply_time >=", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumLessThan(Integer value) {
-            addCriterion("topic_num <", value, "topicNum");
+        public Criteria andLastReplyTimeLessThan(Date value) {
+            addCriterion("last_reply_time <", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumLessThanOrEqualTo(Integer value) {
-            addCriterion("topic_num <=", value, "topicNum");
+        public Criteria andLastReplyTimeLessThanOrEqualTo(Date value) {
+            addCriterion("last_reply_time <=", value, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumIn(List<Integer> values) {
-            addCriterion("topic_num in", values, "topicNum");
+        public Criteria andLastReplyTimeIn(List<Date> values) {
+            addCriterion("last_reply_time in", values, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumNotIn(List<Integer> values) {
-            addCriterion("topic_num not in", values, "topicNum");
+        public Criteria andLastReplyTimeNotIn(List<Date> values) {
+            addCriterion("last_reply_time not in", values, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumBetween(Integer value1, Integer value2) {
-            addCriterion("topic_num between", value1, value2, "topicNum");
+        public Criteria andLastReplyTimeBetween(Date value1, Date value2) {
+            addCriterion("last_reply_time between", value1, value2, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andTopicNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("topic_num not between", value1, value2, "topicNum");
+        public Criteria andLastReplyTimeNotBetween(Date value1, Date value2) {
+            addCriterion("last_reply_time not between", value1, value2, "lastReplyTime");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumIsNull() {
-            addCriterion("qa_num is null");
+        public Criteria andLikeNumIsNull() {
+            addCriterion("like_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumIsNotNull() {
-            addCriterion("qa_num is not null");
+        public Criteria andLikeNumIsNotNull() {
+            addCriterion("like_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumEqualTo(Integer value) {
-            addCriterion("qa_num =", value, "qaNum");
+        public Criteria andLikeNumEqualTo(Integer value) {
+            addCriterion("like_num =", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumNotEqualTo(Integer value) {
-            addCriterion("qa_num <>", value, "qaNum");
+        public Criteria andLikeNumNotEqualTo(Integer value) {
+            addCriterion("like_num <>", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumGreaterThan(Integer value) {
-            addCriterion("qa_num >", value, "qaNum");
+        public Criteria andLikeNumGreaterThan(Integer value) {
+            addCriterion("like_num >", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("qa_num >=", value, "qaNum");
+        public Criteria andLikeNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("like_num >=", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumLessThan(Integer value) {
-            addCriterion("qa_num <", value, "qaNum");
+        public Criteria andLikeNumLessThan(Integer value) {
+            addCriterion("like_num <", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumLessThanOrEqualTo(Integer value) {
-            addCriterion("qa_num <=", value, "qaNum");
+        public Criteria andLikeNumLessThanOrEqualTo(Integer value) {
+            addCriterion("like_num <=", value, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumIn(List<Integer> values) {
-            addCriterion("qa_num in", values, "qaNum");
+        public Criteria andLikeNumIn(List<Integer> values) {
+            addCriterion("like_num in", values, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumNotIn(List<Integer> values) {
-            addCriterion("qa_num not in", values, "qaNum");
+        public Criteria andLikeNumNotIn(List<Integer> values) {
+            addCriterion("like_num not in", values, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumBetween(Integer value1, Integer value2) {
-            addCriterion("qa_num between", value1, value2, "qaNum");
+        public Criteria andLikeNumBetween(Integer value1, Integer value2) {
+            addCriterion("like_num between", value1, value2, "likeNum");
             return (Criteria) this;
         }
 
-        public Criteria andQaNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("qa_num not between", value1, value2, "qaNum");
+        public Criteria andLikeNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("like_num not between", value1, value2, "likeNum");
             return (Criteria) this;
         }
     }

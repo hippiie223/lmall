@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lmall.mapper.ArticleAuthorMapper" >
-  <resultMap id="BaseResultMap" type="com.lmall.domain.ArticleAuthor" >
+<mapper namespace="com.lmall.mapper.TopicPostReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.lmall.domain.TopicPostReply" >
     <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
-    <result column="article_num" property="articleNum" jdbcType="INTEGER" />
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="reply_to_user" property="replyToUser" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="topic_num" property="topicNum" jdbcType="INTEGER" />
-    <result column="qa_num" property="qaNum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.lmall.domain.TopicPostReply" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,16 +71,21 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, author_name, article_num, create_time, update_time, topic_num, qa_num
+    id, post_id, user_name, reply_to_user, create_time, update_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lmall.domain.example.ArticleAuthorExample" >
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.lmall.domain.example.TopicPostReplyExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from article_author
+    ,
+    <include refid="Blob_Column_List" />
+    from topic_post_reply
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,31 +93,49 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lmall.domain.example.ArticleAuthorExample" >
-    delete from article_author
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lmall.domain.example.TopicPostReplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from topic_post_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.lmall.domain.example.TopicPostReplyExample" >
+    delete from topic_post_reply
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lmall.domain.ArticleAuthor" >
-    insert into article_author (id, author_name, article_num, 
-      create_time, update_time, topic_num, 
-      qa_num)
-    values (#{id,jdbcType=INTEGER}, #{authorName,jdbcType=VARCHAR}, #{articleNum,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{topicNum,jdbcType=INTEGER}, 
-      #{qaNum,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.lmall.domain.TopicPostReply" >
+    insert into topic_post_reply (id, post_id, user_name, 
+      reply_to_user, create_time, update_time, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{replyToUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lmall.domain.ArticleAuthor" >
-    insert into article_author
+  <insert id="insertSelective" parameterType="com.lmall.domain.TopicPostReply" >
+    insert into topic_post_reply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="authorName != null" >
-        author_name,
+      <if test="postId != null" >
+        post_id,
       </if>
-      <if test="articleNum != null" >
-        article_num,
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="replyToUser != null" >
+        reply_to_user,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -118,22 +143,22 @@
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="topicNum != null" >
-        topic_num,
-      </if>
-      <if test="qaNum != null" >
-        qa_num,
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="authorName != null" >
-        #{authorName,jdbcType=VARCHAR},
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
       </if>
-      <if test="articleNum != null" >
-        #{articleNum,jdbcType=INTEGER},
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyToUser != null" >
+        #{replyToUser,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -141,31 +166,31 @@
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="topicNum != null" >
-        #{topicNum,jdbcType=INTEGER},
-      </if>
-      <if test="qaNum != null" >
-        #{qaNum,jdbcType=INTEGER},
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lmall.domain.example.ArticleAuthorExample" resultType="java.lang.Integer" >
-    select count(*) from article_author
+  <select id="countByExample" parameterType="com.lmall.domain.example.TopicPostReplyExample" resultType="java.lang.Integer" >
+    select count(*) from topic_post_reply
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update article_author
+    update topic_post_reply
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.authorName != null" >
-        author_name = #{record.authorName,jdbcType=VARCHAR},
+      <if test="record.postId != null" >
+        post_id = #{record.postId,jdbcType=INTEGER},
       </if>
-      <if test="record.articleNum != null" >
-        article_num = #{record.articleNum,jdbcType=INTEGER},
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyToUser != null" >
+        reply_to_user = #{record.replyToUser,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -173,38 +198,49 @@
       <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.topicNum != null" >
-        topic_num = #{record.topicNum,jdbcType=INTEGER},
-      </if>
-      <if test="record.qaNum != null" >
-        qa_num = #{record.qaNum,jdbcType=INTEGER},
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
-    update article_author
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update topic_post_reply
     set id = #{record.id,jdbcType=INTEGER},
-      author_name = #{record.authorName,jdbcType=VARCHAR},
-      article_num = #{record.articleNum,jdbcType=INTEGER},
+      post_id = #{record.postId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      reply_to_user = #{record.replyToUser,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      topic_num = #{record.topicNum,jdbcType=INTEGER},
-      qa_num = #{record.qaNum,jdbcType=INTEGER}
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select resultMap="BaseResultMap" parameterType="com.lmall.domain.example.ArticleAuthorExample" id="selectByExampleWithRowbounds" >
+  <update id="updateByExample" parameterType="map" >
+    update topic_post_reply
+    set id = #{record.id,jdbcType=INTEGER},
+      post_id = #{record.postId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      reply_to_user = #{record.replyToUser,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select resultMap="ResultMapWithBLOBs" parameterType="com.lmall.domain.example.TopicPostReplyExample" id="selectByExampleWithBLOBsWithRowbounds" >
     select
     <if test="distinct" >
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from article_author
+    ,
+    <include refid="Blob_Column_List" />
+    from topic_post_reply
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -212,16 +248,19 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="getTopAuthor" resultType="com.lmall.domain.ArticleAuthorDTO">
+  <select resultMap="BaseResultMap" parameterType="com.lmall.domain.example.TopicPostReplyExample" id="selectByExampleWithRowbounds" >
     select
-    id as id,author_name as authorName,article_num as articleNum
-    from article_author
-    order by article_num desc
-    limit 10
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from topic_post_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
   </select>
-  <update id="changeArticleNum" parameterType="java.lang.String">
-    update article_author
-    set article_num=article_num+1
-    where author_name=#{authorName}
-  </update>
 </mapper>
